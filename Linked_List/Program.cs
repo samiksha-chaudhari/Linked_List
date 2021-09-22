@@ -12,14 +12,14 @@ namespace Linked_List
 
             while (defcount == 0)
             {
-                Console.WriteLine("1:Add  2:Print 3:Insert at position  4:Exit");
+                Console.WriteLine("1:Add  2:Print 3:Insert at position  4:Remove 1st node  5:Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());//variable for taking choice from the user
 
                 switch (choice)  //switch case
                 {
                     case 1:
                         list.Add(56);
-                       // list.Add(30);
+                        //list.Add(30);
                         list.Add(70);
                         break;
                     case 2:
@@ -27,6 +27,9 @@ namespace Linked_List
                         break;
                     case 3:
                         list.InsertAtPosition(2, 30);
+                        break;
+                    case 4:
+                        list.RemoveFirstNode();
                         break;
 
                     default:
