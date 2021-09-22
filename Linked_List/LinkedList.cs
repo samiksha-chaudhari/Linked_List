@@ -9,7 +9,7 @@ namespace Linked_List
         internal Node head;
         internal void Add(int data)
         {
-            Node node = new Node(data);
+            /*Node node = new Node(data);
             if (this.head == null)
                 this.head = node;
             else
@@ -21,7 +21,22 @@ namespace Linked_List
                 }
                 temp.next = node;
             }
-           // Console.WriteLine("{0} added to list", node.data);
+           Console.WriteLine("{0} added to list", node.data);*/
+
+            Node node = new Node(data);
+            Node current = head, previous = null;
+            while (current != null && current.data < node.data)
+            {
+                previous = current;
+                current = current.next;
+            }
+            if (previous == null)
+                head = node;
+            else
+            {
+                previous.next = node;
+            }
+            node.next = current;
         }
 
 
