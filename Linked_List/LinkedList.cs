@@ -21,8 +21,7 @@ namespace Linked_List
                 }
                 temp.next = node;
             }
-            Console.WriteLine("{0} added to list", node.data);
-
+           // Console.WriteLine("{0} added to list", node.data);
         }
 
 
@@ -91,15 +90,46 @@ namespace Linked_List
 
         public bool Search(int value)
         {
-            while (this.head != null)
+            Node temp = head;
+            while (temp != null)
             {
-                if (this.head.data == value)
+                if (temp.data == value)
                 {
                     return true;
                 }
-                this.head = this.head.next;
+                temp = temp.next;
             }
             return false;
         }
+
+        public void Delete(int data)
+        {
+            Node temp = head, previous = null;
+            if (temp != null && temp.data == data)
+            {
+                head = temp.next;
+                return;
+            }
+            while (temp != null && temp.data != data)
+            {
+                previous = temp;
+                temp = temp.next;
+            }
+            if (temp == null)
+                return;
+            previous.next = temp.next;
+        }
+        public int Size()
+        {
+            int size = 0;
+            Node temp = head;
+            while (temp != null)
+            {
+                size++;
+                temp = temp.next;
+            }
+            return size;
+        }
+
     }
 }
