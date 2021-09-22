@@ -88,5 +88,18 @@ namespace Linked_List
             newNode.next = null;
             return head;
         }
+
+        public bool Search(int value)
+        {
+            while (this.head != null)
+            {
+                if (this.head.data == value)
+                {
+                    return true;
+                }
+                this.head = this.head.next;
+            }
+            return false;
+        }
     }
 }
