@@ -22,6 +22,23 @@ namespace Linked_List
                 temp.next = node;
             }
             Console.WriteLine("{0} added to list", node.data);
+
+        }
+
+
+        internal void Display()
+        {
+            if (this.head == null)
+                Console.WriteLine("The list is empty.");
+            else
+            {
+                Node temp = head;
+                while (temp != null)
+                {
+                    Console.WriteLine(temp.data);
+                    temp = temp.next;
+                }
+            }
         }
     }
 }
