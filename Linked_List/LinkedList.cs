@@ -40,5 +40,29 @@ namespace Linked_List
                 }
             }
         }
+
+        public void InsertAtPosition(int position, int data)
+        {
+            Node node = new Node(data);
+            if (position < 1)
+                Console.WriteLine("Invalid Position");
+            else if (position == 1)
+            {
+                node.next = head;
+                head = node;
+            }
+            else
+            {
+                Node temp = head;
+
+                while (position > 2)
+                {
+                    temp = temp.next;
+                    position--;
+                }
+                node.next = temp.next;
+                temp.next = node;
+            }
+        }
     }
 }
