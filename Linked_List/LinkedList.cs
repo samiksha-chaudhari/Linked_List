@@ -4,25 +4,15 @@ using System.Text;
 
 namespace Linked_List
 {
-    class LinkedList<Gtype> where Gtype : IComparable
+    class LinkedList<Gtype>where Gtype : IComparable
     {
         public Node<Gtype> head;
+        /// <summary>
+        /// method to add data by sorting
+        /// </summary>
+        /// <param name="data"></param>
         public void Add(Gtype data)
         {
-            /*Node node = new Node(data);
-            if (this.head == null)
-                this.head = node;
-            else
-            {
-                Node temp = head;
-                while (temp.next != null)
-                {
-                    temp = temp.next;
-                }
-                temp.next = node;
-            }
-           Console.WriteLine("{0} added to list", node.data);*/
-
             Node<Gtype> node = new Node<Gtype>(data);
             Node<Gtype> current = head, previous = null;
             while (current != null && current.data.CompareTo(node.data) < 0)
@@ -39,7 +29,9 @@ namespace Linked_List
             node.next = current;
         }
 
-
+        /// <summary>
+        /// mathod to display linked list elements
+        /// </summary>
         public void Display()
         {
             if (this.head == null)
@@ -55,7 +47,13 @@ namespace Linked_List
             }
         }
 
-        public void InsertAtPosition(int position,Gtype data)
+        /// <summary>
+        /// method to insert elelment at perticular position
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="data"></param>
+        /// 
+        public void Insert(int position,Gtype data)
         {
             Node<Gtype> node = new Node<Gtype>(data);
             if (position < 1)
@@ -80,7 +78,11 @@ namespace Linked_List
 
         }
 
-        internal Node<Gtype> RemoveFirstNode()
+        /// <summary>
+        /// method to remove first node from linked list
+        /// </summary>
+        /// <returns></returns>
+        public Node<Gtype> RemoveFirstNode()
         {
             if (this.head == null)
                 return null;
@@ -88,7 +90,7 @@ namespace Linked_List
             return this.head;
         }
 
-        internal Node<Gtype> RemoveLastNode()
+        public Node<Gtype> RemoveLastNode()
         {
             if (head == null)
                 return null;
@@ -103,6 +105,11 @@ namespace Linked_List
             return head;
         }
 
+        /// <summary>
+        /// method to check particular element in present or not
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool Search(int value)
         {
             Node<Gtype> temp = head;
@@ -117,6 +124,10 @@ namespace Linked_List
             return false;
         }
 
+        /// <summary>
+        /// method to delete user given element
+        /// </summary>
+        /// <param name="data"></param>
         public void Delete(Gtype data)
         {
             Node<Gtype> temp = head, previous = null;
@@ -134,6 +145,11 @@ namespace Linked_List
                 return;
             previous.next = temp.next;
         }
+
+        /// <summary>
+        /// method to find the size of linked list
+        /// </summary>
+        /// <returns></returns>
         public int Size()
         {
             int size = 0;

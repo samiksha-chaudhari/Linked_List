@@ -36,7 +36,7 @@ namespace Linked_List
                         int no = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter position number: ");
                         int p = Convert.ToInt32(Console.ReadLine());
-                        list.InsertAtPosition(p, no);
+                        list.Insert(p, no);
                         break;
                     case 4:
                         list.RemoveFirstNode();
