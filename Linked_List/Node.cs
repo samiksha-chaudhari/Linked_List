@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Linked_List
 {
-    class Node
+    class Node<Gtype>
     {
-        public int data;
-        public Node next;
-        public Node(int data)
+        public Gtype data;
+        public Node<Gtype> next;
+        public Node(Gtype data)
         {
             this.data = data;
         }

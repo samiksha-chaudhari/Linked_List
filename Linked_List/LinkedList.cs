@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Linked_List
 {
-    class LinkedList
+    class LinkedList<Gtype> where Gtype : IComparable
     {
-        internal Node head;
-        internal void Add(int data)
+        public Node<Gtype> head;
+        public void Add(Gtype data)
         {
             /*Node node = new Node(data);
             if (this.head == null)
@@ -23,9 +23,9 @@ namespace Linked_List
             }
            Console.WriteLine("{0} added to list", node.data);*/
 
-            Node node = new Node(data);
-            Node current = head, previous = null;
-            while (current != null && current.data < node.data)
+            Node<Gtype> node = new Node<Gtype>(data);
+            Node<Gtype> current = head, previous = null;
+            while (current != null && current.data.CompareTo(node.data) < 0)
             {
                 previous = current;
                 current = current.next;
@@ -40,13 +40,13 @@ namespace Linked_List
         }
 
 
-        internal void Display()
+        public void Display()
         {
             if (this.head == null)
                 Console.WriteLine("The list is empty.");
             else
             {
-                Node temp = head;
+                Node<Gtype> temp = head;
                 while (temp != null)
                 {
                     Console.WriteLine(temp.data);
@@ -55,9 +55,9 @@ namespace Linked_List
             }
         }
 
-        public void InsertAtPosition(int position, int data)
+        public void InsertAtPosition(int position,Gtype data)
         {
-            Node node = new Node(data);
+            Node<Gtype> node = new Node<Gtype>(data);
             if (position < 1)
                 Console.WriteLine("Invalid Position");
             else if (position == 1)
@@ -67,7 +67,7 @@ namespace Linked_List
             }
             else
             {
-                Node temp = head;
+                Node<Gtype> temp = head;
 
                 while (position > 2)
                 {
@@ -80,7 +80,7 @@ namespace Linked_List
 
         }
 
-        internal Node RemoveFirstNode()
+        internal Node<Gtype> RemoveFirstNode()
         {
             if (this.head == null)
                 return null;
@@ -88,13 +88,13 @@ namespace Linked_List
             return this.head;
         }
 
-        internal Node RemoveLastNode()
+        internal Node<Gtype> RemoveLastNode()
         {
             if (head == null)
                 return null;
             if (head.next == null)
                 return null;
-            Node newNode = head;
+            Node<Gtype> newNode = head;
             while (newNode.next.next != null)
             {
                 newNode = newNode.next;
@@ -105,10 +105,10 @@ namespace Linked_List
 
         public bool Search(int value)
         {
-            Node temp = head;
+            Node<Gtype> temp = head;
             while (temp != null)
             {
-                if (temp.data == value)
+                if (temp.data.Equals(value))
                 {
                     return true;
                 }
@@ -117,15 +117,15 @@ namespace Linked_List
             return false;
         }
 
-        public void Delete(int data)
+        public void Delete(Gtype data)
         {
-            Node temp = head, previous = null;
-            if (temp != null && temp.data == data)
+            Node<Gtype> temp = head, previous = null;
+            if (temp != null && temp.data.Equals(data))
             {
                 head = temp.next;
                 return;
             }
-            while (temp != null && temp.data != data)
+            while (temp != null && !temp.data.Equals(data))
             {
                 previous = temp;
                 temp = temp.next;
@@ -137,7 +137,7 @@ namespace Linked_List
         public int Size()
         {
             int size = 0;
-            Node temp = head;
+            Node<Gtype> temp = head;
             while (temp != null)
             {
                 size++;

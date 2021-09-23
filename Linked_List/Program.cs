@@ -7,7 +7,7 @@ namespace Linked_List
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Linked List");
-            LinkedList list = new LinkedList();
+            LinkedList<int> list = new LinkedList<int>();
             int defcount = 0;//counter to break the while loop
 
             while (defcount == 0)
